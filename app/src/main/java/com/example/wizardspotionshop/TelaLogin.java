@@ -1,16 +1,13 @@
 package com.example.wizardspotionshop;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 public class TelaLogin extends BaseMainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.container_login_screen);
+        setContentView(R.layout.tela_login);
     }
 
     @Override
