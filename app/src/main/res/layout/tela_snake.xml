@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="800dp"
+  android:background="@drawable/drawable_shape">
+  
+  <ImageView
+    android:layout_width="411.67dp"
+    android:layout_height="818.33dp"
+    android:layout_marginLeft="-26dp"
+    android:layout_gravity="top|left"
+    android:scaleType="centerInside"
+    android:src="@drawable/background_snake" />
+  
+  <FrameLayout
+    android:layout_width="340dp"
+    android:layout_height="527.67dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="157.67dp"
+    android:layout_gravity="top|left">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/drawable_shape_1"
+        android:scaleType="centerCrop" />
+  </FrameLayout>
+  
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="51.33dp"
+    android:layout_marginLeft="135dp"
+    android:layout_gravity="top|left"
+    android:gravity="center_horizontal|center_vertical"
+    android:includeFontPadding="false"
+    android:maxLines="1"
+    android:singleLine="true"
+    android:text="placar"
+    android:textColor="#FF000000"
+    android:textSize="32dp" />
+  
+  <ImageView
+    android:layout_width="21.33dp"
+    android:layout_height="21.33dp"
+    android:layout_marginLeft="328.67dp"
+    android:layout_marginTop="767.33dp"
+    android:layout_gravity="top|left"
+    android:scaleType="centerInside"
+    android:src="@drawable/icon_voltar" />
+</FrameLayout>

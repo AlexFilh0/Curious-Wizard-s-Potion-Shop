@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WizardsPotionShop"
         tools:targetApi="31">
+
         <activity
             android:name=".SplashScreen"
             android:exported="true">
@@ -21,8 +22,47 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TelaLogin"
-            android:label="Inicial" />
+        <activity
+            android:name=".Clicker"
+            android:exported="true"
+            />
+        <activity
+            android:name=".JogoDaVelha"
+            android:exported="true"
+            />
+        <activity
+            android:name=".Menu"
+            android:exported="true"
+            />
+        <activity
+            android:name=".Ranking"
+            android:exported="true"
+            />
+        <activity
+            android:name=".Piano"
+            android:exported="true"
+            />
+        <activity
+            android:name=".TelaLogin"
+            android:exported="true"
+            />
+        <activity
+            android:name=".Snake"
+            android:exported="true" />
+        <activity
+            android:name=".TelaFinal"
+            android:exported="true"
+            />
+        <activity
+            android:name=".TelaPrincipal"
+            android:exported="true"
+            />
+        <activity
+            android:name=".TelaRegistro"
+            android:exported="true"
+            />
+
+
 
     </application>
 

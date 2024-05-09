@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="800dp"
+  android:background="@drawable/drawable_shape">
+  
+  <ImageView
+    android:layout_width="803.33dp"
+    android:layout_height="800dp"
+    android:layout_marginLeft="-183dp"
+    android:layout_gravity="top|left"
+    android:scaleType="centerInside"
+    android:src="@drawable/background_velha" />
+
+  <ImageView
+      android:layout_width="340dp"
+      android:layout_height="340dp"
+      android:layout_gravity="top|left"
+      android:layout_marginLeft="10dp"
+      android:layout_marginTop="315.67dp"
+      android:scaleType="centerInside"
+      android:src="@drawable/tabuleiro_velha" />
+
+  <TextView
+    android:layout_width="310.33dp"
+    android:layout_height="39.67dp"
+    android:layout_marginLeft="24.67dp"
+    android:layout_marginTop="-0.17dp"
+    android:layout_marginBottom="-0.17dp"
+    android:layout_gravity="top|left"
+    android:gravity="center_horizontal|center_vertical"
+    android:includeFontPadding="false"
+    android:maxLines="1"
+    android:singleLine="true"
+    android:text="Placar"
+    android:textColor="#FF000000"
+    android:textSize="32dp" />
+  
+  <ImageView
+    android:layout_width="21.33dp"
+    android:layout_height="21.33dp"
+    android:layout_marginLeft="323.33dp"
+    android:layout_marginTop="767.67dp"
+    android:layout_gravity="top|left"
+    android:scaleType="centerInside"
+    android:src="@drawable/icon_voltar" />
+  
+  <ImageView
+    android:layout_width="219.33dp"
+    android:layout_height="196.67dp"
+    android:layout_marginLeft="70.33dp"
+    android:layout_marginTop="119dp"
+    android:layout_gravity="top|left"
+    android:scaleType="centerInside"
+    android:src="@drawable/epaminondas_emo" />
+</FrameLayout>

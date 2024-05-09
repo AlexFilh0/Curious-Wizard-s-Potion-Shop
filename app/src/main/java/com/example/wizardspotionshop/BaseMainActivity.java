@@ -20,14 +20,10 @@ public abstract class BaseMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(this, android.R.color.black));
+        //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        //window.setStatusBarColor(ContextCompat.getColor(this, android.R.color.black));
 
-        setContentView(R.layout.activity_codia_main);
-        ViewGroup rootView = findViewById(R.id.root);
-        View codiaRootView = LayoutInflater.from(this).inflate(R.layout.layout_codia_root, rootView, false);
-        rootView.addView(codiaRootView, 0);
-        onViewCreated();
+
     }
 
     protected abstract void onViewCreated();
