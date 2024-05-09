@@ -7,7 +7,7 @@ public class TelaRegistro extends BaseMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.container_tela_de_registro);
+        setContentView(R.layout.tela_registro);
     }
 
     @Override
