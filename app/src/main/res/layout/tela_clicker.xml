@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="800dp"
+  android:background="@drawable/drawable_shape">
+
+  <ImageView
+      android:layout_width="360dp"
+      android:layout_height="800dp"
+      android:layout_gravity="top|left"
+      android:scaleType="centerInside"
+      android:src="@drawable/background_clicker" />
+
+  <ImageView
+    android:layout_width="297.64dp"
+    android:layout_height="337.7dp"
+    android:layout_marginLeft="31.33dp"
+    android:layout_marginTop="231dp"
+    android:layout_gravity="top|left"
+    android:scaleType="centerInside"
+    android:src="@drawable/cavalo_bruno" />
+  
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="102.67dp"
+    android:layout_marginLeft="82dp"
+    android:layout_gravity="top|left"
+    android:gravity="center_horizontal|top"
+    android:includeFontPadding="false"
+    android:lineHeight="51.2dp"
+    android:text="clique para\nfazer a poção"
+    android:textColor="#FF000000"
+    android:textSize="32dp" />
+
+</FrameLayout>
