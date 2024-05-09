@@ -7,7 +7,7 @@ public class Ranking extends BaseMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.container_ranking);
+        setContentView(R.layout.tela_ranking);
     }
 
     @Override
