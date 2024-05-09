@@ -7,7 +7,7 @@ public class Menu extends BaseMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.container_menu);
+        setContentView(R.layout.tela_menu);
     }
 
     @Override
