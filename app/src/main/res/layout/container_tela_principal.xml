@@ -1,68 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/container_tela_principal"
-  android:layout_width="match_parent"
-  android:layout_height="800dp"
-  android:background="@drawable/container_tela_principal">
-  
-  <ImageView
-    android:id="@+id/image_design_sem_nome"
-    android:layout_width="360dp"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_tela_principal"
+    android:layout_width="match_parent"
     android:layout_height="800dp"
-    android:layout_gravity="top|left"
-    android:scaleType="centerInside"
-    android:src="@drawable/image_design_sem_nome" />
-  
+    android:background="@drawable/container_tela_principal">
+
   <ImageView
-    android:id="@+id/image_ellipse"
-    android:layout_width="323.67dp"
-    android:layout_height="304.67dp"
-    android:layout_marginTop="502.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/image_ellipse"
-    android:scaleType="centerInside" />
-  
+      android:id="@+id/image_vector2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:scaleType="centerInside"
+      android:src="@drawable/image_vector2" />
+
   <ImageView
-    android:id="@+id/ic_mingcute_menu_fill"
-    android:layout_width="27.67dp"
-    android:layout_height="28.33dp"
-    android:layout_marginLeft="10.33dp"
-    android:layout_marginTop="12.67dp"
-    android:layout_gravity="top|left"
-    android:scaleType="centerInside"
-    android:src="@drawable/ic_mingcute_menu_fill" />
-  
+      android:id="@+id/image_design_sem_nome"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:scaleType="centerInside"
+      android:src="@drawable/image_design_sem_nome"
+      app:layout_constraintBottom_toBottomOf="parent"
+      tools:layout_editor_absoluteX="16dp" />
+
   <ImageView
-    android:id="@+id/image_vector"
-    android:layout_width="144dp"
-    android:layout_height="132.83dp"
-    android:layout_marginLeft="173.33dp"
-    android:layout_marginTop="51.5dp"
-    android:layout_gravity="top|left"
-    android:scaleType="centerInside"
-    android:src="@drawable/image_vector" />
-  
+      android:id="@+id/image_ellipse"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/image_ellipse"
+      android:scaleType="centerInside" />
+
   <ImageView
-    android:id="@+id/image_vector1"
-    android:layout_width="99dp"
-    android:layout_height="119.67dp"
-    android:layout_marginLeft="37.33dp"
-    android:layout_marginTop="243.33dp"
-    android:layout_gravity="top|left"
-    android:scaleType="centerInside"
-    android:src="@drawable/image_vector1" />
-  
+      android:id="@+id/ic_mingcute_menu_fill"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:scaleType="centerInside"
+      android:src="@drawable/ic_mingcute_menu_fill" />
+
   <ImageView
-    android:id="@+id/image_vector2"
-    android:layout_width="111.33dp"
-    android:layout_height="168.68dp"
-    android:layout_marginLeft="207.5dp"
-    android:layout_marginTop="326.17dp"
-    android:layout_gravity="top|left"
-    android:scaleType="centerInside"
-    android:src="@drawable/image_vector2" />
-</FrameLayout>
+      android:id="@+id/image_vector"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:scaleType="centerInside"
+      android:src="@drawable/image_vector" />
+
+  <ImageView
+      android:id="@+id/image_vector1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:scaleType="centerInside"
+      android:src="@drawable/image_vector1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

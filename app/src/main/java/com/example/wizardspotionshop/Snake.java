@@ -7,7 +7,7 @@ public class Snake extends BaseMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_snake);
+        setContentView(R.layout.tela_snake_novo);
     }
 
     @Override

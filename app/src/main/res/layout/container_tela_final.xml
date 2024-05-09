@@ -1,94 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/container_tela_final"
-  android:layout_width="match_parent"
-  android:layout_height="800dp"
-  android:background="@drawable/container_tela_final">
-  
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_tela_final"
+    android:layout_width="match_parent"
+    android:layout_height="800dp"
+    android:background="@drawable/container_tela_final">
+
   <ImageView
-    android:id="@+id/image_background"
-    android:layout_width="367dp"
-    android:layout_height="809.33dp"
-    android:layout_marginLeft="-3.67dp"
-    android:layout_marginTop="-9.33dp"
-    android:layout_gravity="top|left"
-    android:scaleType="centerInside"
-    android:src="@drawable/background_roxo" />
-  
+      android:id="@+id/image_background"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:scaleType="centerInside"
+      android:src="@drawable/background_roxo"
+      tools:layout_editor_absoluteX="8dp"
+      tools:layout_editor_absoluteY="50dp" />
+
   <TextView
-    android:id="@+id/text_congrats_message"
-    android:layout_width="wrap_content"
-    android:layout_height="76.99dp"
-    android:layout_marginLeft="58.88dp"
-    android:layout_marginTop="139dp"
-    android:layout_gravity="top|left"
-    android:gravity="center_horizontal|center_vertical"
-    android:includeFontPadding="false"
-    android:maxLines="1"
-    android:singleLine="true"
-    android:text="você ganhou!"
-    android:textColor="#FF000000"
-    android:textSize="42.67dp" />
-  
-  <LinearLayout
-    android:id="@+id/container_frame1"
-    android:layout_width="126.91dp"
-    android:layout_height="30.35dp"
-    android:layout_marginLeft="121.67dp"
-    android:layout_marginTop="472.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/container_frame1"
-    android:clipToPadding="false"
-    android:gravity="center"
-    android:orientation="horizontal"
-    android:paddingBottom="1.03dp"
-    android:paddingLeft="3.33dp"
-    android:paddingRight="3.33dp"
-    android:paddingTop="1.03dp">
-    
-    <TextView
-      android:id="@+id/text_mode_free"
+      android:id="@+id/text_congrats_message"
       android:layout_width="wrap_content"
-      android:layout_height="28.29dp"
+      android:layout_height="wrap_content"
       android:gravity="center_horizontal|center_vertical"
       android:includeFontPadding="false"
       android:maxLines="1"
       android:singleLine="true"
-      android:text="MODO LIVRE"
+      android:text="você ganhou!"
       android:textColor="#FF000000"
-      android:textSize="16dp" />
-  </LinearLayout>
-  
+      android:textSize="42.67dp" />
+
   <LinearLayout
-    android:id="@+id/container_frame2"
-    android:layout_width="126.91dp"
-    android:layout_height="30.35dp"
-    android:layout_marginLeft="124dp"
-    android:layout_marginTop="529dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/container_frame2"
-    android:clipToPadding="false"
-    android:gravity="center"
-    android:orientation="horizontal"
-    android:paddingBottom="1.86dp"
-    android:paddingLeft="3.33dp"
-    android:paddingRight="3.33dp"
-    android:paddingTop="1.86dp">
-    
-    <TextView
-      android:id="@+id/text_exit"
+      android:id="@+id/container_frame1"
       android:layout_width="wrap_content"
-      android:layout_height="26.63dp"
-      android:gravity="center_horizontal|center_vertical"
-      android:includeFontPadding="false"
-      android:maxLines="1"
-      android:singleLine="true"
-      android:text="SAIR"
-      android:textColor="#FF000000"
-      android:textSize="16dp" />
+      android:layout_height="wrap_content"
+      android:background="@drawable/container_frame1"
+      android:clipToPadding="false"
+      android:gravity="center"
+      android:orientation="horizontal"
+      android:paddingLeft="3.33dp"
+      android:paddingTop="1.03dp"
+      android:paddingRight="3.33dp"
+      android:paddingBottom="1.03dp">
+
+    <TextView
+        android:id="@+id/text_mode_free"
+        android:layout_width="wrap_content"
+        android:layout_height="28.29dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="MODO LIVRE"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
   </LinearLayout>
-</FrameLayout>
+
+  <LinearLayout
+      android:id="@+id/container_frame2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/container_frame2"
+      android:clipToPadding="false"
+      android:gravity="center"
+      android:orientation="horizontal"
+      android:paddingLeft="3.33dp"
+      android:paddingTop="1.86dp"
+      android:paddingRight="3.33dp"
+      android:paddingBottom="1.86dp">
+
+    <TextView
+        android:id="@+id/text_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="26.63dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="SAIR"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
+  </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
