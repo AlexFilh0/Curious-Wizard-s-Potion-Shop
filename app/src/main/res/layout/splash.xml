@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="800dp"
+  android:background="@drawable/drawable_shape">
+
+  <ImageView
+      android:id="@+id/splash_image_curious_wizard"
+      android:layout_width="331.33dp"
+      android:layout_height="213dp"
+      android:layout_gravity="top|left"
+      android:layout_marginLeft="14.33dp"
+      android:layout_marginTop="122.67dp"
+      android:scaleType="centerInside"
+      android:src="@drawable/splash_image_curious_wizard" />
+
+  <TextView
+    android:id="@+id/splash_text_by_alexandre_marcela_pedro"
+    android:layout_width="159.67dp"
+    android:layout_height="165dp"
+    android:layout_marginLeft="100.33dp"
+    android:layout_marginTop="330.67dp"
+    android:layout_gravity="top|left"
+    android:gravity="center_horizontal|top"
+    android:includeFontPadding="false"
+    android:lineHeight="42.67dp"
+    android:text="BY: \nALEXANDRE\nMARCELA\nPEDRO"
+    android:textColor="#FF000000"
+    android:textSize="26.67dp" />
+  
+  <ImageView
+    android:id="@+id/splash_image_fca_bbe_da_e_aedead"
+    android:layout_width="310.33dp"
+    android:layout_height="305.67dp"
+    android:layout_marginLeft="14.33dp"
+    android:layout_marginTop="505dp"
+    android:layout_gravity="top|left"
+    android:scaleType="centerInside"
+    android:src="@drawable/splash_image_fca_bbe_da_e_aedead" />
+
+  <Button
+      android:id="@+id/btnMuda"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="MUDA TELA" />
+</FrameLayout>

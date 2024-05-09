@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/container_login_screen"
+  android:layout_width="match_parent"
+  android:layout_height="800dp"
+  android:background="@drawable/container_login_screen">
+  
+  <ImageView
+    android:id="@+id/image_background"
+    android:layout_width="395dp"
+    android:layout_height="831dp"
+    android:layout_marginLeft="-10.33dp"
+    android:layout_marginTop="-12dp"
+    android:layout_gravity="top|left"
+    android:scaleType="centerInside"
+    android:src="@drawable/image_background" />
+  
+  <ImageView
+    android:id="@+id/image_rectangle"
+    android:layout_width="319.81dp"
+    android:layout_height="466.66dp"
+    android:layout_marginLeft="25.33dp"
+    android:layout_marginTop="205.33dp"
+    android:layout_gravity="top|left"
+    android:background="@drawable/image_rectangle"
+    android:scaleType="centerInside" />
+  
+  <ImageView
+    android:id="@+id/image_name"
+    android:layout_width="190.76dp"
+    android:layout_height="82.05dp"
+    android:layout_marginLeft="82.67dp"
+    android:layout_marginTop="237dp"
+    android:layout_gravity="top|left"
+    android:scaleType="centerInside"
+    android:src="@drawable/image_name" />
+  
+  <LinearLayout
+    android:id="@+id/container_frame"
+    android:layout_width="199dp"
+    android:layout_height="121.33dp"
+    android:layout_marginLeft="85.33dp"
+    android:layout_marginTop="339.33dp"
+    android:layout_gravity="top|left"
+    android:background="@drawable/container_frame"
+    android:gravity="left|top"
+    android:orientation="vertical">
+    
+    <FrameLayout
+      android:id="@+id/container_default_property"
+      android:layout_width="185.61dp"
+      android:layout_height="27.49dp"
+      android:layout_marginLeft="6.67dp"
+      android:layout_marginTop="6.67dp"
+      android:layout_gravity="left">
+      
+      <TextView
+        android:id="@+id/text_login"
+        android:layout_width="49.2dp"
+        android:layout_height="27.34dp"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Login"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
+      
+      <ImageView
+        android:id="@+id/container_line"
+        android:layout_width="185.61dp"
+        android:layout_height="6.48dp"
+        android:layout_marginTop="21.01dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/container_line" />
+    </FrameLayout>
+    
+    <FrameLayout
+      android:id="@+id/container_variant_property"
+      android:layout_width="185.61dp"
+      android:layout_height="27.49dp"
+      android:layout_marginLeft="6.67dp"
+      android:layout_marginTop="20dp"
+      android:layout_gravity="left">
+      
+      <TextView
+        android:id="@+id/text_password"
+        android:layout_width="49.2dp"
+        android:layout_height="27.34dp"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Senha"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
+      
+      <ImageView
+        android:id="@+id/container_line1"
+        android:layout_width="185.61dp"
+        android:layout_height="6.48dp"
+        android:layout_marginTop="21.01dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/container_line1" />
+    </FrameLayout>
+  </LinearLayout>
+  
+  <LinearLayout
+    android:id="@+id/container_frame1"
+    android:layout_width="126.91dp"
+    android:layout_height="30.35dp"
+    android:layout_marginLeft="121.67dp"
+    android:layout_marginTop="472.67dp"
+    android:layout_gravity="top|left"
+    android:background="@drawable/container_frame1"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingBottom="1.49dp"
+    android:paddingLeft="3.33dp"
+    android:paddingRight="3.33dp"
+    android:paddingTop="1.49dp">
+    
+    <TextView
+      android:id="@+id/text_enter"
+      android:layout_width="wrap_content"
+      android:layout_height="27.37dp"
+      android:gravity="center_horizontal|center_vertical"
+      android:includeFontPadding="false"
+      android:maxLines="1"
+      android:singleLine="true"
+      android:text="ENTRAR"
+      android:textColor="#FF000000"
+      android:textSize="16dp" />
+  </LinearLayout>
+  
+  <LinearLayout
+    android:id="@+id/container_frame2"
+    android:layout_width="126.91dp"
+    android:layout_height="30.35dp"
+    android:layout_marginLeft="124dp"
+    android:layout_marginTop="529dp"
+    android:layout_gravity="top|left"
+    android:background="@drawable/container_frame2"
+    android:clipToPadding="false"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:paddingBottom="1.2dp"
+    android:paddingLeft="3.33dp"
+    android:paddingRight="3.33dp"
+    android:paddingTop="1.2dp">
+    
+    <TextView
+      android:id="@+id/text_register"
+      android:layout_width="wrap_content"
+      android:layout_height="27.94dp"
+      android:gravity="center_horizontal|center_vertical"
+      android:includeFontPadding="false"
+      android:maxLines="1"
+      android:singleLine="true"
+      android:text="Registrar"
+      android:textColor="#FF000000"
+      android:textSize="16dp" />
+  </LinearLayout>
+</FrameLayout>
