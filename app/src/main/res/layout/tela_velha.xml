@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -17,32 +16,42 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/background_snake" />
+        app:srcCompat="@drawable/background_velha" />
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="357dp"
-        android:layout_height="554dp"
+        android:id="@+id/imageView6"
+        android:layout_width="292dp"
+        android:layout_height="302dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15"
+        app:srcCompat="@drawable/epaminondas_emo" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="393dp"
+        android:layout_height="437dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.649"
-        app:srcCompat="@drawable/drawable_shape_1" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintVertical_bias="0.504"
+        app:srcCompat="@drawable/tabuleiro_velha" />
 
     <TextView
-        android:id="@+id/txtPlacar"
-        android:layout_width="122dp"
-        android:layout_height="29dp"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/doublebass_regular_trial"
-        android:text="PLACAR:"
-        android:textAlignment="center"
+        android:text="Vez: X"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView5"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

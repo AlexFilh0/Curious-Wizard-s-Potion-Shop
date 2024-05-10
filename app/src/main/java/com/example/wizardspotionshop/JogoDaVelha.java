@@ -7,7 +7,7 @@ public class JogoDaVelha extends BaseMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_jogo_da_velha);
+        setContentView(R.layout.tela_velha);
     }
 
     @Override

@@ -1,34 +1,13 @@
 package com.example.wizardspotionshop;
 
-import android.content.Intent;
-import android.health.connect.datatypes.SleepSessionRecord;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
-import java.util.logging.Handler;
 
 public class SplashScreen extends BaseMainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.splash);
-
-        Button btnMuda = findViewById(R.id.btnMuda);
-
-        btnMuda.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(SplashScreen.this, TelaLogin.class);
-                startActivity(intent);
-
-            }
-        });
-
+        setContentView(R.layout.tela_splash);
 
 
     }

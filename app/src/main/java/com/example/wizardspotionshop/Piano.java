@@ -4,10 +4,10 @@ import android.os.Bundle;
 
 public class Piano extends BaseMainActivity {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_piano);
+        setContentView(R.layout.tela_piano_novo);
     }
 
     @Override
