@@ -31,72 +31,37 @@
         app:layout_constraintTop_toTopOf="@+id/image_background"
         app:layout_constraintVertical_bias="0.65" />
 
-    <LinearLayout
-        android:id="@+id/ct_voltar"
-        android:layout_width="126.91dp"
-        android:layout_height="30.35dp"
-        android:layout_gravity="top|left"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/container_frame2"
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="3.33dp"
-        android:paddingTop="1.2dp"
-        android:paddingRight="3.33dp"
-        android:paddingBottom="1.2dp"
+    <Button
+        android:id="@+id/btn_entrar"
+        android:layout_width="128dp"
+        android:layout_height="39dp"
+        android:backgroundTint="#D169E5"
+        android:fontFamily="@font/doublebass_regular_trial"
         android:rotation="-2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ct_sair">
-
-        <TextView
-            android:id="@+id/text_register"
-            android:layout_width="wrap_content"
-            android:layout_height="27.94dp"
-            android:fontFamily="@font/doublebass_regular_trial"
-            android:gravity="center_horizontal|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Registrar"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ct_sair"
-        android:layout_width="126.91dp"
-        android:layout_height="30.35dp"
-        android:layout_gravity="top|left"
-        android:background="@drawable/container_frame1"
-        android:clipToPadding="false"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingLeft="3.33dp"
-        android:paddingTop="1.49dp"
-        android:paddingRight="3.33dp"
-        android:paddingBottom="1.49dp"
-        android:rotation="-2"
+        android:text="Entrar"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="@+id/image_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_name"
-        app:layout_constraintVertical_bias="0.6">
+        app:layout_constraintVertical_bias="0.6" />
 
-        <TextView
-            android:id="@+id/text_enter"
-            android:layout_width="wrap_content"
-            android:layout_height="27.37dp"
-            android:fontFamily="@font/doublebass_regular_trial"
-            android:gravity="center_horizontal|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="ENTRAR"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_registrar"
+        android:layout_width="128dp"
+        android:layout_height="39dp"
+        android:backgroundTint="#D169E5"
+        android:fontFamily="@font/doublebass_regular_trial"
+        android:rotation="-2"
+        android:text="Registrar"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/image_rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_name"
+        app:layout_constraintVertical_bias="0.75" />
 
     <ImageView
         android:id="@+id/image_name"
@@ -117,9 +82,9 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:fontFamily="@font/doublebass_light_trial"
+        android:hint="Login"
         android:inputType="text"
         android:rotation="-2"
-        android:text="Login"
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,9 +99,9 @@
         android:layout_marginTop="96dp"
         android:ems="10"
         android:fontFamily="@font/doublebass_light_trial"
-        android:inputType="text"
+        android:hint="Senha"
+        android:inputType="text|textPassword"
         android:rotation="-2"
-        android:text="Senha"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
