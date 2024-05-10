@@ -7,7 +7,7 @@ public class TelaPrincipal extends BaseMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.container_tela_principal);
+        setContentView(R.layout.tela_principal);
     }
 
     @Override
