@@ -30,7 +30,7 @@
       android:textSize="42.67dp" />
 
   <LinearLayout
-      android:id="@+id/container_frame1"
+      android:id="@+id/ct_sair"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:background="@drawable/container_frame1"
@@ -56,7 +56,7 @@
   </LinearLayout>
 
   <LinearLayout
-      android:id="@+id/container_frame2"
+      android:id="@+id/ct_voltar"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:background="@drawable/container_frame2"
