@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_welcome" />
 
     <LinearLayout
-        android:id="@+id/container_frame1"
+        android:id="@+id/ct_sair"
         android:layout_width="126.91dp"
         android:layout_height="30.35dp"
         android:layout_gravity="top|left"
