@@ -22,7 +22,7 @@ public class Clicker extends BaseMainActivity {
         btn_clicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cliques == 10) {
+                if (cliques == 99) {
                     Intent intent = new Intent(Clicker.this, TelaFinal.class);
                     startActivity(intent);
                 }
