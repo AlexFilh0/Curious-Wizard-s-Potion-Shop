@@ -27,9 +27,10 @@
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/image_background"
-        app:layout_constraintVertical_bias="0.65" />
+        app:layout_constraintVertical_bias="0.655" />
 
     <Button
         android:id="@+id/btn_entrar"
@@ -40,6 +41,7 @@
         android:rotation="-2"
         android:text="Entrar"
         android:textColor="#000000"
+        app:cornerRadius="@null"
         app:layout_constraintBottom_toBottomOf="@+id/image_rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -76,7 +78,7 @@
         app:layout_constraintTop_toTopOf="@+id/image_rectangle" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/edtLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -93,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/image_name" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/edtSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="96dp"

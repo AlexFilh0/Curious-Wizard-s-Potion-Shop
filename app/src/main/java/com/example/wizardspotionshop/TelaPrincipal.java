@@ -6,6 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.wizardspotionshop.BaseMainActivity;
+import com.example.wizardspotionshop.JogoDaVelha;
+import com.example.wizardspotionshop.Menu;
+import com.example.wizardspotionshop.R;
+import com.example.wizardspotionshop.Snake;
+
 public class TelaPrincipal extends BaseMainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +35,7 @@ public class TelaPrincipal extends BaseMainActivity {
         btn_velha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mudar_velha = new Intent(TelaPrincipal.this,JogoDaVelha.class);
+                Intent mudar_velha = new Intent(TelaPrincipal.this, JogoDaVelha.class);
                 startActivity(mudar_velha);
             }
         });
