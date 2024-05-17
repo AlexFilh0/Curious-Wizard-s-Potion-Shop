@@ -61,6 +61,7 @@
             android:name=".TelaRegistro"
             android:exported="true"
             />
+        <activity android:name=".SnakeKT" android:exported="true"/>
 
 
 
