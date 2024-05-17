@@ -8,9 +8,6 @@
       <SelectionState runConfigName="Clicker">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="TelaFinal">
-        <option name="selectionMode" value="DROPDOWN" />
-      </SelectionState>
       <SelectionState runConfigName="SnakeKT">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
@@ -20,7 +17,7 @@
       <SelectionState runConfigName="JogoDaVelha">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="TelaLogin">
+      <SelectionState runConfigName="Snake">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
