@@ -17,7 +17,15 @@ public class TelaPrincipal extends BaseMainActivity {
         ImageButton btn_velha = findViewById(R.id.btn_velha);
         ImageButton btn_snake = findViewById(R.id.btn_snake);
         ImageButton btn_piano = findViewById(R.id.btn_piano);
+        ImageButton btn_clicker = findViewById(R.id.btn_clicker);
 
+        btn_clicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mudar_clicker = new Intent(TelaPrincipal.this, Clicker.class);
+                startActivity(mudar_clicker);
+            }
+        });
         btn_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
