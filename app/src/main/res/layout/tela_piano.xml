@@ -1,152 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-<FrameLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_piano"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-  android:layout_width="match_parent"
-  android:layout_height="360dp"
-  android:background="@drawable/drawable_shape"
-    android:orientation="horizontal">
+    <ImageView
+        android:id="@+id/teclaG"
+        android:layout_width="60dp"
+        android:layout_height="250dp"
+        android:layout_gravity="top|left"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/drawable_shape_2"
+        android:clickable="true"
+        android:onClick="clickG"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/teclaF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
 
-  <ImageView
-      android:layout_width="803dp"
-      android:layout_height="360dp"
-      android:layout_gravity="top|left"
-      android:layout_marginLeft="-3dp"
-      android:scaleType="centerInside"
-      android:src="@drawable/background_piano" />
+    <ImageView
+        android:id="@+id/teclaF"
+        android:layout_width="60dp"
+        android:layout_height="250dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_2"
+        android:clickable="true"
+        android:onClick="clickF"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
 
-  <ImageView
-    android:layout_width="54.26dp"
-    android:layout_height="233.67dp"
-    android:layout_marginLeft="183.33dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_2"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="54.26dp"
-    android:layout_height="233.67dp"
-    android:layout_marginLeft="246.46dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_2"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="54.26dp"
-    android:layout_height="233.67dp"
-    android:layout_marginLeft="309.58dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_3"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="54.26dp"
-    android:layout_height="233.67dp"
-    android:layout_marginLeft="372.7dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_4"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="54.26dp"
-    android:layout_height="233.67dp"
-    android:layout_marginLeft="435.82dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_5"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="54.26dp"
-    android:layout_height="233.67dp"
-    android:layout_marginLeft="498.95dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_6"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="54.26dp"
-    android:layout_height="233.67dp"
-    android:layout_marginLeft="562.07dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_7"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="36.54dp"
-    android:layout_height="141.62dp"
-    android:layout_marginLeft="219.14dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_8"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="36.54dp"
-    android:layout_height="141.62dp"
-    android:layout_marginLeft="282.26dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_9"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="36.54dp"
-    android:layout_height="141.62dp"
-    android:layout_marginLeft="408.51dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_10"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="36.54dp"
-    android:layout_height="141.62dp"
-    android:layout_marginLeft="471.63dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_11"
-    android:scaleType="centerInside" />
-  
-  <ImageView
-    android:layout_width="36.54dp"
-    android:layout_height="141.62dp"
-    android:layout_marginLeft="534.75dp"
-    android:layout_marginTop="84.67dp"
-    android:layout_gravity="top|left"
-    android:background="@drawable/drawable_shape_12"
-    android:scaleType="centerInside" />
-  
-  <TextView
-    android:layout_width="310.33dp"
-    android:layout_height="39.67dp"
-    android:layout_marginLeft="253.33dp"
-    android:layout_marginTop="24.16dp"
-    android:layout_marginBottom="-0.17dp"
-    android:layout_gravity="top|left"
-    android:gravity="center_horizontal|center_vertical"
-    android:includeFontPadding="false"
-    android:maxLines="1"
-    android:singleLine="true"
-    android:text="TOQUE AS NOTAS"
-    android:textColor="#FF000000"
-    android:textSize="32dp" />
-  
-  <ImageView
-    android:layout_width="21.33dp"
-    android:layout_height="21.33dp"
-    android:layout_marginLeft="758.33dp"
-    android:layout_marginTop="329dp"
-    android:layout_gravity="top|left"
-    android:scaleType="centerInside"
-    android:src="@drawable/icon_voltar" />
-</FrameLayout>
+    <ImageView
+        android:id="@+id/teclaB"
+        android:layout_width="60dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/drawable_shape_3"
+        android:clickable="true"
+        android:onClick="clickB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/teclaA"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <ImageView
+        android:id="@+id/teclaE"
+        android:layout_width="60dp"
+        android:layout_height="250dp"
+        android:layout_gravity="top|left"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/drawable_shape_4"
+        android:clickable="true"
+        android:onClick="clickE"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/teclaF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <ImageView
+        android:id="@+id/teclaC"
+        android:layout_width="60dp"
+        android:layout_height="250dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/drawable_shape_5"
+        android:backgroundTint="#FFFFFF"
+        android:clickable="true"
+        android:onClick="clickC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/teclaD"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <ImageView
+        android:id="@+id/teclaD"
+        android:layout_width="60dp"
+        android:layout_height="250dp"
+        android:layout_gravity="top|left"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/drawable_shape_6"
+        android:clickable="true"
+        android:onClick="clickD"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/teclaE"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <ImageView
+        android:id="@+id/teclaA"
+        android:layout_width="60dp"
+        android:layout_height="250dp"
+        android:layout_gravity="top|left"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/drawable_shape_7"
+        android:clickable="true"
+        android:onClick="clickA"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/teclaG"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <ImageView
+        android:id="@+id/taclaASust"
+        android:layout_width="36.54dp"
+        android:layout_height="141.62dp"
+        android:layout_gravity="top|left"
+        android:layout_marginStart="48dp"
+        android:background="@drawable/drawable_shape_8"
+        android:clickable="true"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="@+id/teclaA"
+        app:layout_constraintTop_toTopOf="@+id/teclaB" />
+
+    <ImageView
+        android:id="@+id/taclaGSust"
+        android:layout_width="36.54dp"
+        android:layout_height="141.62dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_9"
+        android:clickable="true"
+        android:onClick="clickGSust"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="@+id/teclaA"
+        app:layout_constraintStart_toStartOf="@+id/teclaG"
+        app:layout_constraintTop_toTopOf="@+id/teclaA" />
+
+    <ImageView
+        android:id="@+id/taclaFSust"
+        android:layout_width="36.54dp"
+        android:layout_height="141.62dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_10"
+        android:clickable="true"
+        android:onClick="clickFSust"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="@+id/teclaG"
+        app:layout_constraintStart_toStartOf="@+id/teclaF"
+        app:layout_constraintTop_toTopOf="@+id/teclaG" />
+
+    <ImageView
+        android:id="@+id/taclaDSust"
+        android:layout_width="36.54dp"
+        android:layout_height="141.62dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_11"
+        android:clickable="true"
+        android:onClick="clickDSust"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="@+id/teclaE"
+        app:layout_constraintStart_toStartOf="@+id/teclaD"
+        app:layout_constraintTop_toTopOf="@+id/teclaE" />
+
+    <ImageView
+        android:id="@+id/taclaCSust"
+        android:layout_width="36.54dp"
+        android:layout_height="141.62dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_12"
+        android:clickable="true"
+        android:onClick="clickCSust"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="@+id/teclaD"
+        app:layout_constraintStart_toStartOf="@+id/teclaC"
+        app:layout_constraintTop_toTopOf="@+id/teclaD" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
