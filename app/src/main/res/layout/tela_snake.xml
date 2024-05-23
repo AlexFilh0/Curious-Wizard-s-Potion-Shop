@@ -36,8 +36,8 @@
 
     <FrameLayout
         android:id="@+id/frame_layout"
-        android:layout_width="357dp"
-        android:layout_height="554dp"
+        android:layout_width="349dp"
+        android:layout_height="475dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

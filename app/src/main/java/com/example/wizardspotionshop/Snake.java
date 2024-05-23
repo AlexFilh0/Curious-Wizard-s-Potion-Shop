@@ -1,8 +1,11 @@
 package com.example.wizardspotionshop;
 
+import android.content.Context;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.Button;
@@ -38,10 +41,17 @@ public class Snake extends BaseMainActivity {
     enum Direction {UP, DOWN, LEFT, RIGHT}
     private Direction currentDirection = Direction.RIGHT;
 
+
+    public void vibra(long tempo) {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(tempo);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_snake);
+
 
         frameLayout = findViewById(R.id.frame_layout);
         snakeHead = findViewById(R.id.snake_head);
@@ -59,12 +69,16 @@ public class Snake extends BaseMainActivity {
         Button btn_right = findViewById(R.id.btn_right);
         Button btn_left = findViewById(R.id.btn_left);
 
+
+
         btn_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (currentDirection != Direction.DOWN)
                     currentDirection = Direction.UP;
+                vibra(80);
             }
+
         });
 
         btn_down.setOnClickListener(new View.OnClickListener() {
@@ -72,14 +86,17 @@ public class Snake extends BaseMainActivity {
             public void onClick(View v) {
                 if (currentDirection != Direction.UP)
                     currentDirection = Direction.DOWN;
+                vibra(80);
             }
         });
 
         btn_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("INFO", String.valueOf(snakeY));
                 if (currentDirection != Direction.LEFT)
                     currentDirection = Direction.RIGHT;
+                vibra(80);
             }
         });
 
@@ -88,11 +105,13 @@ public class Snake extends BaseMainActivity {
             public void onClick(View v) {
                 if (currentDirection != Direction.RIGHT)
                     currentDirection = Direction.LEFT;
+                vibra(80);
             }
         });
 
         startGame();
     }
+
 
     @Override
     protected void onViewCreated() {
@@ -113,6 +132,7 @@ public class Snake extends BaseMainActivity {
         snakeHead.setX(snakeX);
         snakeHead.setY(snakeY);
 
+
         // Initialize snake body
         snakeBody.clear();
         snakeBody.add(snakeHead);
@@ -129,6 +149,7 @@ public class Snake extends BaseMainActivity {
     private void moveSnake() {
         handler.postDelayed(new Runnable() {
             @Override
+
             public void run() {
                 for (int i = snakeBody.size() - 1; i > 0; i--) {
                     ImageView currentPart = snakeBody.get(i);
@@ -153,7 +174,8 @@ public class Snake extends BaseMainActivity {
                 }
 
                 // Check for collisions with walls
-                if (snakeX >= screenWidth || snakeX < 0 || snakeY >= screenHeight || snakeY < 0) {
+                if (snakeX >= screenWidth || snakeX < 0 || snakeY >= 1810 || snakeY < 0) {
+                    vibra(100);
                     endGame();
                     return;
                 }
@@ -162,6 +184,7 @@ public class Snake extends BaseMainActivity {
                 for (int i = 1; i < snakeBody.size(); i++) {
                     ImageView part = snakeBody.get(i);
                     if (Math.abs(snakeX - part.getX()) < blockSize / 3 && Math.abs(snakeY - part.getY()) < blockSize / 3) {
+                        vibra(100);
                         endGame();
                         return;
                     }
@@ -170,6 +193,7 @@ public class Snake extends BaseMainActivity {
                 // Check for collisions with food
                 if (Math.abs(snakeX - foodX) < blockSize / 3 && Math.abs(snakeY - foodY) < blockSize / 3) {
                     score++;
+                    vibra(100);
                     updateScore();
                     spawnFood();
                     growSnake();
