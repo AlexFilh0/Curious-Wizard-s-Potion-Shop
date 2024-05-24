@@ -52,7 +52,7 @@ public class Snake extends BaseMainActivity {
 
     public void morreu() {
         Button btn_reiniciar = findViewById(R.id.btn_reiniciar);
-        Button btn_sair = findViewById(R.id.btn_sair_velha);
+        Button btn_sair = findViewById(R.id.btn_sair_snake);
 
         btn_sair.setVisibility(View.VISIBLE);
         btn_reiniciar.setVisibility(View.VISIBLE);

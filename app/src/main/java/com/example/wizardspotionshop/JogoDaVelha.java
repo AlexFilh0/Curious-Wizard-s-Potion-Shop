@@ -2,9 +2,11 @@ package com.example.wizardspotionshop;
 import java.util.Random;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +65,9 @@ public class JogoDaVelha extends BaseMainActivity {
         btn_22.setOnClickListener(view -> onButtonClick(2, 2, btn_22, txt_vez));
         vibra(100);
 
+        Button btn_sair = findViewById(R.id.btn_sair_velha);
+        Button btn_reiniciar = findViewById(R.id.btn_reiniciar_velha);
+
 
     }
 
@@ -78,15 +83,54 @@ public class JogoDaVelha extends BaseMainActivity {
         Button btn_21 = findViewById(R.id.btn_21);
         Button btn_22 = findViewById(R.id.btn_22);
 
-        btn_00.setEnabled(false);
-        btn_01.setEnabled(false);
-        btn_02.setEnabled(false);
-        btn_10.setEnabled(false);
-        btn_11.setEnabled(false);
-        btn_12.setEnabled(false);
-        btn_21.setEnabled(false);
-        btn_22.setEnabled(false);
-        btn_20.setEnabled(false);
+        Button btn_sair = findViewById(R.id.btn_sair_velha);
+        Button btn_reiniciar = findViewById(R.id.btn_reiniciar_velha);
+
+        btn_sair.setVisibility(View.VISIBLE);
+        btn_reiniciar.setVisibility(View.VISIBLE);
+
+        btn_00.setClickable(false);
+        btn_01.setClickable(false);
+        btn_02.setClickable(false);
+        btn_10.setClickable(false);
+        btn_11.setClickable(false);
+        btn_12.setClickable(false);
+        btn_21.setClickable(false);
+        btn_22.setClickable(false);
+        btn_20.setClickable(false);
+
+        btn_sair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vibra(100);
+                Intent i = new Intent(JogoDaVelha.this, TelaPrincipal.class);
+                startActivity(i);
+            }
+        });
+
+        btn_reiniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                vibra(100);
+                btn_00.setText("");
+                btn_01.setText("");
+                btn_02.setText("");
+                btn_10.setText("");
+                btn_11.setText("");
+                btn_12.setText("");
+                btn_21.setText("");
+                btn_22.setText("");
+                btn_20.setText("");
+                btn_sair.setVisibility(View.INVISIBLE);
+                btn_reiniciar.setVisibility(View.INVISIBLE);
+
+                game = new Game();
+                bot = new Bot();
+
+                // Atribuir listeners de clique aos botões
+                setButtonClickListeners();
+            }
+        });
     }
 
     private void onButtonClick(int row, int col, Button button, TextView txt_vez) {
@@ -165,6 +209,7 @@ public class JogoDaVelha extends BaseMainActivity {
                     txt_vez.setText(message);
                     Handler espera = new Handler();
                     espera.postDelayed(this::desabilitarBotao, 1000);
+
 
                 }
             }
