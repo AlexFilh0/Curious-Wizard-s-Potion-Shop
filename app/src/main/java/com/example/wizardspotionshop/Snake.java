@@ -161,14 +161,14 @@ public class Snake extends BaseMainActivity {
                 // Check for collisions with itself
                 for (int i = 1; i < snakeBody.size(); i++) {
                     ImageView part = snakeBody.get(i);
-                    if (Math.abs(snakeX - part.getX()) < blockSize / 2 && Math.abs(snakeY - part.getY()) < blockSize / 2) {
+                    if (Math.abs(snakeX - part.getX()) < blockSize / 3 && Math.abs(snakeY - part.getY()) < blockSize / 3) {
                         endGame();
                         return;
                     }
                 }
 
                 // Check for collisions with food
-                if (Math.abs(snakeX - foodX) < blockSize / 2 && Math.abs(snakeY - foodY) < blockSize / 2) {
+                if (Math.abs(snakeX - foodX) < blockSize / 3 && Math.abs(snakeY - foodY) < blockSize / 3) {
                     score++;
                     updateScore();
                     spawnFood();
@@ -185,7 +185,7 @@ public class Snake extends BaseMainActivity {
 
     private void growSnake() {
         ImageView newPart = new ImageView(this);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(50, 50);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(70, 70);
         newPart.setLayoutParams(params);
         newPart.setImageResource(R.drawable.container_frame1); // This should be your 50x50 image
         frameLayout.addView(newPart);
