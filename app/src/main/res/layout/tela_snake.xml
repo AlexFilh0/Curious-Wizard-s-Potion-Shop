@@ -54,15 +54,16 @@
 
         <ImageView
             android:id="@+id/snake_head"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
             android:scaleType="fitXY"
+            android:visibility="visible"
             android:src="@drawable/container_frame1" />
 
         <ImageView
             android:id="@+id/snake_food"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
             android:layout_x="0dp"
             android:layout_y="0dp"
             android:visibility="visible"
