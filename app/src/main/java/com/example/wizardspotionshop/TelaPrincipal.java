@@ -25,6 +25,9 @@ public class TelaPrincipal extends BaseMainActivity {
         ImageButton btn_piano = findViewById(R.id.btn_piano);
         ImageButton btn_clicker = findViewById(R.id.btn_clicker);
 
+        btn_snake.setEnabled(false);
+        btn_velha.setEnabled(false);
+        btn_clicker.setEnabled(false);
         btn_clicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
