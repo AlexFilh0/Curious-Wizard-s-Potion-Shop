@@ -1,7 +1,10 @@
 package com.example.wizardspotionshop;
 import java.util.Random;
+
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Vibrator;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,6 +15,11 @@ public class JogoDaVelha extends BaseMainActivity {
 
     private Game game;
     private Bot bot;
+
+    public void vibra(long tempo) {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(tempo);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +33,7 @@ public class JogoDaVelha extends BaseMainActivity {
         // Atribuir listeners de clique aos botões
         setButtonClickListeners();
     }
+
 
     @Override
     protected void onViewCreated() {
@@ -52,12 +61,39 @@ public class JogoDaVelha extends BaseMainActivity {
         btn_20.setOnClickListener(view -> onButtonClick(2, 0, btn_20, txt_vez));
         btn_21.setOnClickListener(view -> onButtonClick(2, 1, btn_21, txt_vez));
         btn_22.setOnClickListener(view -> onButtonClick(2, 2, btn_22, txt_vez));
+        vibra(100);
+
+
+    }
+
+    public void desabilitarBotao() {
+
+        Button btn_00 = findViewById(R.id.btn_00);
+        Button btn_01 = findViewById(R.id.btn_01);
+        Button btn_02 = findViewById(R.id.btn_02);
+        Button btn_10 = findViewById(R.id.btn_10);
+        Button btn_11 = findViewById(R.id.btn_11);
+        Button btn_12 = findViewById(R.id.btn_12);
+        Button btn_20 = findViewById(R.id.btn_20);
+        Button btn_21 = findViewById(R.id.btn_21);
+        Button btn_22 = findViewById(R.id.btn_22);
+
+        btn_00.setEnabled(false);
+        btn_01.setEnabled(false);
+        btn_02.setEnabled(false);
+        btn_10.setEnabled(false);
+        btn_11.setEnabled(false);
+        btn_12.setEnabled(false);
+        btn_21.setEnabled(false);
+        btn_22.setEnabled(false);
+        btn_20.setEnabled(false);
     }
 
     private void onButtonClick(int row, int col, Button button, TextView txt_vez) {
 
         if (game.makeMove(row, col)) {
             button.setText(String.valueOf(game.getCurrentPlayer()));
+            vibra(100);
 
             // Verificar se há um vencedor após a jogada do jogador humano
             char winner = game.checkWinner();
@@ -77,7 +113,13 @@ public class JogoDaVelha extends BaseMainActivity {
 
                 }
 
+                vibra(200);
                 txt_vez.setText(message); // Exibir o vencedor no TextView
+                Handler espera2 = new Handler();
+                espera2.postDelayed(this::desabilitarBotao, 1000);
+
+
+
                 //Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             } else {
                 // Se não houver vencedor, é a vez do bot jogar
@@ -117,9 +159,13 @@ public class JogoDaVelha extends BaseMainActivity {
 
                     }
 
+                    vibra(200);
                     // Atualizar o TextView mesmo quando o bot ganha
                     TextView txt_vez = findViewById(R.id.txtVez);
                     txt_vez.setText(message);
+                    Handler espera = new Handler();
+                    espera.postDelayed(this::desabilitarBotao, 1000);
+
                 }
             }
         }
