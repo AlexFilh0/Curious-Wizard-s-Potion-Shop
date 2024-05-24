@@ -1,6 +1,7 @@
 package com.example.wizardspotionshop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,6 +11,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Snake extends BaseMainActivity {
+
 
     private FrameLayout frameLayout;
     private ImageView snakeHead;
@@ -47,6 +50,29 @@ public class Snake extends BaseMainActivity {
         v.vibrate(tempo);
     }
 
+    public void morreu() {
+        Button btn_reiniciar = findViewById(R.id.btn_reiniciar);
+        Button btn_sair = findViewById(R.id.btn_sair_velha);
+
+        btn_sair.setVisibility(View.VISIBLE);
+        btn_reiniciar.setVisibility(View.VISIBLE);
+
+        btn_sair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Snake.this, TelaPrincipal.class);
+                startActivity(i);
+            }
+        });
+        btn_reiniciar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btn_reiniciar.setVisibility(View.INVISIBLE);
+                btn_sair.setVisibility(View.INVISIBLE);
+                endGame();
+            }
+        });
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,11 +90,12 @@ public class Snake extends BaseMainActivity {
         screenWidth = size.x;
         screenHeight = size.y;
 
-        Button btn_up = findViewById(R.id.btn_up);
-        Button btn_down = findViewById(R.id.btn_down);
-        Button btn_right = findViewById(R.id.btn_right);
-        Button btn_left = findViewById(R.id.btn_left);
+        ImageButton btn_up = findViewById(R.id.btn_up);
+        ImageButton btn_down = findViewById(R.id.btn_down);
+        ImageButton btn_right = findViewById(R.id.btn_right);
+        ImageButton btn_left = findViewById(R.id.btn_left);
 
+        Button btn_reiniciar = findViewById(R.id.btn_reiniciar);
 
 
         btn_up.setOnClickListener(new View.OnClickListener() {
@@ -174,9 +201,9 @@ public class Snake extends BaseMainActivity {
                 }
 
                 // Check for collisions with walls
-                if (snakeX >= screenWidth || snakeX < 0 || snakeY >= 1810 || snakeY < 0) {
+                if (snakeX >= frameLayout.getWidth()-50 || snakeX < 0 || snakeY >= frameLayout.getHeight() || snakeY < 0) {
                     vibra(100);
-                    endGame();
+                    morreu();
                     return;
                 }
 
@@ -185,7 +212,7 @@ public class Snake extends BaseMainActivity {
                     ImageView part = snakeBody.get(i);
                     if (Math.abs(snakeX - part.getX()) < blockSize / 3 && Math.abs(snakeY - part.getY()) < blockSize / 3) {
                         vibra(100);
-                        endGame();
+                        morreu();
                         return;
                     }
                 }
@@ -220,14 +247,17 @@ public class Snake extends BaseMainActivity {
         scoreText.setText("Score: " + score);
     }
 
+
     private void endGame() {
         // Remove all body parts except the head
         for (int i = 1; i < snakeBody.size(); i++) {
             frameLayout.removeView(snakeBody.get(i));
         }
         snakeBody.clear();
-        snakeBody.add(snakeHead);
 
+        scoreText.setText("VOCÊ MORREU!");
+
+        snakeBody.add(snakeHead);
         startGame();
     }
 }
