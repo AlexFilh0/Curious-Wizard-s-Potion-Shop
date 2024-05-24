@@ -36,7 +36,7 @@ public class Snake extends BaseMainActivity {
     private int score = 0;
 
     private final int blockSize = 50;
-    private final int numBlocksWide = 20;
+    private final int numBlocksWide = 14;
     private final int numBlocksHigh = 30;
 
     private List<ImageView> snakeBody = new ArrayList<>();
@@ -201,7 +201,7 @@ public class Snake extends BaseMainActivity {
                 }
 
                 // Check for collisions with walls
-                if (snakeX >= frameLayout.getWidth()-50 || snakeX < 0 || snakeY >= frameLayout.getHeight() || snakeY < 0) {
+                if (snakeX >= frameLayout.getWidth()-17 || snakeX < 0 || snakeY >= frameLayout.getHeight()-snakeHead.getHeight() || snakeY < 0) {
                     vibra(100);
                     morreu();
                     return;
@@ -236,7 +236,7 @@ public class Snake extends BaseMainActivity {
 
     private void growSnake() {
         ImageView newPart = new ImageView(this);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(70, 70);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(63, 63);
         newPart.setLayoutParams(params);
         newPart.setImageResource(R.drawable.container_frame1); // This should be your 50x50 image
         frameLayout.addView(newPart);
