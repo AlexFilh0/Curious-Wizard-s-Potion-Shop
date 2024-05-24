@@ -129,6 +129,7 @@
         android:layout_marginStart="48dp"
         android:background="@drawable/drawable_shape_8"
         android:clickable="true"
+        android:onClick="clickASust"
         android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="@+id/teclaA"
         app:layout_constraintTop_toTopOf="@+id/teclaB" />
