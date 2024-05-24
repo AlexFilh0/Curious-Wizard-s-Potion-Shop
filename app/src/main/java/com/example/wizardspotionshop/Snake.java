@@ -10,6 +10,7 @@ import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -64,10 +65,10 @@ public class Snake extends BaseMainActivity {
         screenWidth = size.x;
         screenHeight = size.y;
 
-        Button btn_up = findViewById(R.id.btn_up);
-        Button btn_down = findViewById(R.id.btn_down);
-        Button btn_right = findViewById(R.id.btn_right);
-        Button btn_left = findViewById(R.id.btn_left);
+        ImageButton btn_up = findViewById(R.id.btn_up);
+        ImageButton btn_down = findViewById(R.id.btn_down);
+        ImageButton btn_right = findViewById(R.id.btn_right);
+        ImageButton btn_left = findViewById(R.id.btn_left);
 
 
 
@@ -174,7 +175,7 @@ public class Snake extends BaseMainActivity {
                 }
 
                 // Check for collisions with walls
-                if (snakeX >= screenWidth || snakeX < 0 || snakeY >= 1810 || snakeY < 0) {
+                if (snakeX >= frameLayout.getWidth()-50 || snakeX < 0 || snakeY >= frameLayout.getHeight() || snakeY < 0) {
                     vibra(100);
                     endGame();
                     return;
