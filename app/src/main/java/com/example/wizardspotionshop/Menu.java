@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wizardspotionshop.helper.UsuarioDAO;
@@ -70,5 +71,10 @@ public class Menu extends BaseMainActivity {
     private int dp2px(double dpValue) {
       final float scale = getResources().getDisplayMetrics().density;
       return (int) (dpValue * scale + 0.5f);
+    }
+
+    public void abreEasterEgg(View v) {
+        Intent intent = new Intent(Menu.this, EasterEgg.class);
+        startActivity(intent);
     }
 }

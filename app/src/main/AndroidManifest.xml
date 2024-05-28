@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.WizardsPotionShop"
         tools:targetApi="31">
-
+        <activity
+            android:name=".EasterEgg"
+            android:exported="false" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">
@@ -24,39 +26,31 @@
         </activity>
         <activity
             android:name=".Clicker"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".JogoDaVelha"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".Menu"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".Ranking"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".Piano"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".TelaLogin"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".Snake"
             android:exported="true" />
         <activity
             android:name=".TelaFinal"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".TelaPrincipal"
-            android:exported="true"
-            />
+            android:exported="true" />
         <activity
             android:name=".TelaRegistro"
             android:exported="true"

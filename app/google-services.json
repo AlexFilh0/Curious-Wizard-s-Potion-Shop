@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "538487755527",
+    "firebase_url": "https://curious-wizard-s-potion-shop-default-rtdb.firebaseio.com",
+    "project_id": "curious-wizard-s-potion-shop",
+    "storage_bucket": "curious-wizard-s-potion-shop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538487755527:android:d819890b6bc50f4e97eba2",
+        "android_client_info": {
+          "package_name": "com.example.wizardspotionshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVQ7kSO1C3-qtPGBi449UF9AFGSkmhzYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
