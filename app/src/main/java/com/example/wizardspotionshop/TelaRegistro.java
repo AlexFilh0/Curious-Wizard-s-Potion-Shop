@@ -2,14 +2,23 @@ package com.example.wizardspotionshop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.wizardspotionshop.helper.UsuarioDAO;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class TelaRegistro extends BaseMainActivity {
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         
@@ -63,13 +72,30 @@ public class TelaRegistro extends BaseMainActivity {
                 }
 
                 // Verifica se o usuário já está cadastrado
+                // Verificar email válido
+                // Alterar layout
 
 
                 usuarioDAO.registrar(login, senha);
 
-                Intent intent = new Intent(TelaRegistro.this, TelaLogin.class);
-                startActivity(intent);
+                // Cadastro de usuário (Firebase)
+                auth.createUserWithEmailAndPassword(login, senha).addOnCompleteListener(
+                        TelaRegistro.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Bem-vindo!", Toast.LENGTH_SHORT).show();
 
+                                    // Volta para tela de registro
+                                    Intent intent = new Intent(TelaRegistro.this, TelaPrincipal.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Algo deu errado.", Toast.LENGTH_SHORT).show();
+                                    Log.i("INFO DB", "Ocorreram os seguintes problemas: " + task.getException());
+                                }
+                            }
+                        }
+                );
             }
         });
 
