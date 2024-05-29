@@ -84,7 +84,7 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:fontFamily="@font/doublebass_light_trial"
-        android:hint="Login"
+        android:hint="E-mail"
         android:inputType="text"
         android:rotation="-2"
         android:textStyle="bold"

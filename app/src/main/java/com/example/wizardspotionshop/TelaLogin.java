@@ -53,7 +53,7 @@ public class TelaLogin extends BaseMainActivity {
                  /**** Validações de login ****/
                  // Verifica se o campo Login está preenchido
                  if (login.isEmpty()) {
-                     Toast.makeText(getApplicationContext(), "Digite o Usuário", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(getApplicationContext(), "Digite o E-mail", Toast.LENGTH_SHORT).show();
                      return;
                  }
 
@@ -80,12 +80,11 @@ public class TelaLogin extends BaseMainActivity {
                              Intent intent = new Intent(TelaLogin.this, TelaPrincipal.class);
                              startActivity(intent);
                          } else {
-                             Toast.makeText(getApplicationContext(), "Algo deu errado.", Toast.LENGTH_SHORT).show();
-                             Log.i("INFO DB", "Ocorreram os seguintes problemas: " + task.getException());
+                             Toast.makeText(getApplicationContext(), "Usuário/Senha incorretos", Toast.LENGTH_SHORT).show();
+                             Log.i("Login", "Ocorreram os seguintes problemas: " + task.getException());
                          }
                      }
                  });
-
              }
          });
 

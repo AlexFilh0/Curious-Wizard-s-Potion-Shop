@@ -35,7 +35,7 @@ public class Menu extends BaseMainActivity {
         String usuario = usuarioDAO.retornaUsuarioLog();
 
         // Mostra o nome do usuário
-        txt_welcome.setText("Bem Vindo, " + usuario);
+        txt_welcome.setText("Bem Vindo!");
 
         btn_ranking.setOnClickListener(new View.OnClickListener() {
             @Override
