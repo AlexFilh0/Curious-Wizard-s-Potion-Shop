@@ -9,8 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wizardspotionshop.helper.UsuarioDAO;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Menu extends BaseMainActivity {
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         
@@ -32,7 +35,7 @@ public class Menu extends BaseMainActivity {
         String usuario = usuarioDAO.retornaUsuarioLog();
 
         // Mostra o nome do usuário
-        txt_welcome.setText("Bem Vindo, " + usuario);
+        txt_welcome.setText("Bem Vindo!");
 
         btn_ranking.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,8 +49,9 @@ public class Menu extends BaseMainActivity {
         btn_sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Exclui dados da tabela de usuário logado
-                usuarioDAO.sair();
+                // Desloga o usuário
+                // usuarioDAO.sair();
+                auth.signOut();
 
                 Intent intent = new Intent(Menu.this, TelaLogin.class);
                 startActivity(intent);

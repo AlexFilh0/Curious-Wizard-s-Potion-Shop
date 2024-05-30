@@ -3,18 +3,28 @@ package com.example.wizardspotionshop;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.wizardspotionshop.helper.DbHelper;
 
 import com.example.wizardspotionshop.helper.DbHelper;
 import com.example.wizardspotionshop.helper.UsuarioDAO;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class TelaLogin extends BaseMainActivity {
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -43,7 +53,7 @@ public class TelaLogin extends BaseMainActivity {
                  /**** Validações de login ****/
                  // Verifica se o campo Login está preenchido
                  if (login.isEmpty()) {
-                     Toast.makeText(getApplicationContext(), "Digite o Usuário", Toast.LENGTH_SHORT).show();
+                     Toast.makeText(getApplicationContext(), "Digite o E-mail", Toast.LENGTH_SHORT).show();
                      return;
                  }
 
@@ -54,10 +64,27 @@ public class TelaLogin extends BaseMainActivity {
                  }
 
                  // Faz login
-                 if (usuarioDAO.entrar(login, senha)) {
+                 /*if (usuarioDAO.entrar(login, senha)) {
                      Intent intent = new Intent(TelaLogin.this, TelaPrincipal.class);
                      startActivity(intent);
-                 }
+                 } */
+
+                 // Login (Firebase)
+                 auth.signInWithEmailAndPassword(login, senha).addOnCompleteListener(TelaLogin.this, new OnCompleteListener<AuthResult>() {
+                     @Override
+                     public void onComplete(@NonNull Task<AuthResult> task) {
+                         if (task.isSuccessful()) {
+                             Toast.makeText(getApplicationContext(), "Bem-vindo!", Toast.LENGTH_SHORT).show();
+
+                             // Vai para tela principal
+                             Intent intent = new Intent(TelaLogin.this, TelaPrincipal.class);
+                             startActivity(intent);
+                         } else {
+                             Toast.makeText(getApplicationContext(), "Usuário/Senha incorretos", Toast.LENGTH_SHORT).show();
+                             Log.i("Login", "Ocorreram os seguintes problemas: " + task.getException());
+                         }
+                     }
+                 });
              }
          });
 

@@ -6,8 +6,11 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.example.wizardspotionshop.helper.UsuarioDAO;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashScreen extends BaseMainActivity {
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -23,7 +26,15 @@ public class SplashScreen extends BaseMainActivity {
                 Intent intent;
 
                 // Verifica se tem usuário logado
-                if(usuarioDAO.verificarLogado()) {
+               /* if(usuarioDAO.verificarLogado()) {
+                    // Abre direto na tela principal se tiver usuário logado
+                    intent = new Intent(SplashScreen.this, TelaPrincipal.class);
+                } else {
+                    // Abre na tela de login se não tiver usuário logado
+                    intent = new Intent(SplashScreen.this, TelaLogin.class);
+                } */
+
+                if (auth.getCurrentUser() != null) {
                     // Abre direto na tela principal se tiver usuário logado
                     intent = new Intent(SplashScreen.this, TelaPrincipal.class);
                 } else {

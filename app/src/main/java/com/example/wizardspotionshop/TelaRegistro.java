@@ -2,14 +2,28 @@ package com.example.wizardspotionshop;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.wizardspotionshop.helper.UsuarioDAO;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class TelaRegistro extends BaseMainActivity {
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         
@@ -40,13 +54,18 @@ public class TelaRegistro extends BaseMainActivity {
                 /**** Validações de registro ****/
                 // Verifica se o campo Login está preenchido
                 if (login.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Digite o Usuário", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Digite o E-mail", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 // Verifica se o campo Senha está preenchido
                 if (senha.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Digite a Senha", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (senha.length() < 6) {
+                    Toast.makeText(getApplicationContext(), "A senha deve conter no mínimo 6 caracteres", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -62,14 +81,41 @@ public class TelaRegistro extends BaseMainActivity {
                     return;
                 }
 
-                // Verifica se o usuário já está cadastrado
+                if (!Patterns.EMAIL_ADDRESS.matcher(login).matches()) {
+                    Toast.makeText(getApplicationContext(), "Digite um E-mail válido", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+                //usuarioDAO.registrar(login, senha);
 
-                usuarioDAO.registrar(login, senha);
+                // Cadastro de usuário (Firebase)
+                auth.createUserWithEmailAndPassword(login, senha).addOnCompleteListener(
+                        TelaRegistro.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Bem-vindo!", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(TelaRegistro.this, TelaLogin.class);
-                startActivity(intent);
-
+                                    // Volta para tela de registro
+                                    Intent intent = new Intent(TelaRegistro.this, TelaPrincipal.class);
+                                    startActivity(intent);
+                                } else {
+                                    try {
+                                        throw task.getException();
+                                    } catch(FirebaseAuthWeakPasswordException e) {
+                                        Toast.makeText(getApplicationContext(), "A senha deve conter no mínimo 6 caracteres", Toast.LENGTH_SHORT).show();
+                                    } catch(FirebaseAuthInvalidCredentialsException e) {
+                                        Toast.makeText(getApplicationContext(), "Digite um E-mail válido", Toast.LENGTH_SHORT).show();
+                                    } catch(FirebaseAuthUserCollisionException e) {
+                                        Toast.makeText(getApplicationContext(), "E-mail já cadastrado", Toast.LENGTH_SHORT).show();
+                                    } catch(Exception e) {
+                                        Toast.makeText(getApplicationContext(), "Algo deu errado.", Toast.LENGTH_SHORT).show();
+                                        Log.e("ERRO", "Ocorreram os seguintes problemas: " + task.getException());
+                                    }
+                                }
+                            }
+                        }
+                );
             }
         });
 
