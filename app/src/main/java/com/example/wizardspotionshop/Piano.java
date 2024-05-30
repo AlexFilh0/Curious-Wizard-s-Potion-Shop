@@ -20,6 +20,9 @@ import com.google.firebase.database.*;
 import java.util.*;
 
 public class Piano extends BaseMainActivity {
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+
     String notes[] = new String[] {"c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"};
     List<String> notaTocada = new ArrayList<String>();
 
@@ -37,8 +40,6 @@ public class Piano extends BaseMainActivity {
                              WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.tela_piano);
-
-
     }
 
     public String[] sequencia() {
@@ -120,6 +121,30 @@ public class Piano extends BaseMainActivity {
                 btnPiano.setText("FOI");
                 notaTocada.clear();
                 seq = sequencia();
+
+                // Define as variáveis do banco ("tabelas")
+                DatabaseReference usuarioBD = referencia.child("usuario");
+
+                // Recupera o usuário logado
+                DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
+
+                // Desbloqueia o jogo da cobrinha
+                usuarioLogado.child("snake").setValue(true);
+//                usuarioLogado.child("pontuacao").setValue(20);
+//
+//                usuarioLogado.child("pontuacao").addValueEventListener(new ValueEventListener() {
+//                    int pontuacao;
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        pontuacao = Integer.parseInt(snapshot.getValue().toString());
+//                        usuarioLogado.child("pontuacao").setValue(pontuacao + 1);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
 
             }
             else {

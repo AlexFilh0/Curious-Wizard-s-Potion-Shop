@@ -15,11 +15,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Snake extends BaseMainActivity {
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
 
 
     private FrameLayout frameLayout;
@@ -56,6 +62,17 @@ public class Snake extends BaseMainActivity {
 
         btn_sair.setVisibility(View.VISIBLE);
         btn_reiniciar.setVisibility(View.VISIBLE);
+
+        if (score >= 2) {
+            // Define as variáveis do banco ("tabelas")
+            DatabaseReference usuarioBD = referencia.child("usuario");
+
+            // Recupera o usuário logado
+            DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
+
+            // Desbloqueia o jogo da velha
+            usuarioLogado.child("velha").setValue(true);
+        }
 
         btn_sair.setOnClickListener(new View.OnClickListener() {
             @Override

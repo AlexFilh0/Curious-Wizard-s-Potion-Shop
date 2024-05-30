@@ -11,9 +11,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class JogoDaVelha extends BaseMainActivity {
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
 
     private Game game;
     private Bot bot;
@@ -149,6 +154,14 @@ public class JogoDaVelha extends BaseMainActivity {
                     if (game.getCurrentPlayer() == 'X') {
                         winner = 'X';
                         message = "Você ganhou!";
+                        // Define as variáveis do banco ("tabelas")
+                        DatabaseReference usuarioBD = referencia.child("usuario");
+
+                        // Recupera o usuário logado
+                        DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
+
+                        // Desbloqueia o clicker
+                        usuarioLogado.child("clicker").setValue(true);
                     }
                     else {
                         winner = 'O';
