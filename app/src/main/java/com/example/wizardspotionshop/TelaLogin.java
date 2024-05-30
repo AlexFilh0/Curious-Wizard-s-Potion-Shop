@@ -21,9 +21,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class TelaLogin extends BaseMainActivity {
     private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,9 @@ public class TelaLogin extends BaseMainActivity {
         // Define as variáveis dos campos
         EditText edtLogin = findViewById(R.id.edtLogin);
         EditText edtSenha = findViewById(R.id.edtSenha);
+
+        // Define as variáveis do banco ("tabelas")
+        DatabaseReference usuarioBD = referencia.child("usuario");
 
         // Botão Entrar - vai para tela principal
         btnEntrar.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +83,21 @@ public class TelaLogin extends BaseMainActivity {
                      @Override
                      public void onComplete(@NonNull Task<AuthResult> task) {
                          if (task.isSuccessful()) {
-                             Toast.makeText(getApplicationContext(), "Bem-vindo!", Toast.LENGTH_SHORT).show();
+                             // Recupera o usuário logado
+                             DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
+                             usuarioLogado.child("usuario").addValueEventListener(new ValueEventListener() {
+                                 String usuario = "";
+                                 @Override
+                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                     usuario = snapshot.getValue().toString();
+                                     Toast.makeText(getApplicationContext(), "Bem-vindo, " + usuario.toUpperCase() +"!", Toast.LENGTH_SHORT).show();
+                                 }
+
+                                 @Override
+                                 public void onCancelled(@NonNull DatabaseError error) {
+
+                                 }
+                             });
 
                              // Vai para tela principal
                              Intent intent = new Intent(TelaLogin.this, TelaPrincipal.class);

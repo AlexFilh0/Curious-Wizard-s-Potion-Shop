@@ -20,9 +20,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class TelaRegistro extends BaseMainActivity {
     private FirebaseAuth auth = FirebaseAuth.getInstance();
+
+    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +43,22 @@ public class TelaRegistro extends BaseMainActivity {
 
         // Define as variáveis dos campos
         EditText edtLogin = findViewById(R.id.edtLogin);
+        EditText edtUsuario = findViewById(R.id.edtUsuario);
         EditText edtSenha = findViewById(R.id.edtSenha);
         EditText edtSenha2 = findViewById(R.id.edtSenha2);
+
+        // Define as variáveis do banco ("tabelas")
+        DatabaseReference usuarioBD = referencia.child("usuario");
 
         // Botão Registar - vai para tela de login
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Recupera os valores digitados
-                String login  = edtLogin.getText().toString().trim();
-                String senha  = edtSenha.getText().toString().trim();
-                String senha2 = edtSenha2.getText().toString().trim();
+                String login   = edtLogin.getText().toString().trim();
+                String usuario = edtUsuario.getText().toString().trim();
+                String senha   = edtSenha.getText().toString().trim();
+                String senha2  = edtSenha2.getText().toString().trim();
 
                 /**** Validações de registro ****/
                 // Verifica se o campo Login está preenchido
@@ -64,6 +73,7 @@ public class TelaRegistro extends BaseMainActivity {
                     return;
                 }
 
+                // Verifica se a senha tem no mínimo 6 caracteres
                 if (senha.length() < 6) {
                     Toast.makeText(getApplicationContext(), "A senha deve conter no mínimo 6 caracteres", Toast.LENGTH_SHORT).show();
                     return;
@@ -81,6 +91,7 @@ public class TelaRegistro extends BaseMainActivity {
                     return;
                 }
 
+                // Verifica se o e-mail é válido
                 if (!Patterns.EMAIL_ADDRESS.matcher(login).matches()) {
                     Toast.makeText(getApplicationContext(), "Digite um E-mail válido", Toast.LENGTH_SHORT).show();
                     return;
@@ -94,7 +105,15 @@ public class TelaRegistro extends BaseMainActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Bem-vindo!", Toast.LENGTH_SHORT).show();
+                                    // Salva o usuário no banco
+                                    usuarioBD.child(auth.getUid()).child("usuario").setValue(usuario);
+                                    usuarioBD.child(auth.getUid()).child("pontuacao").setValue(0);
+                                    usuarioBD.child(auth.getUid()).child("snake").setValue(false);
+                                    usuarioBD.child(auth.getUid()).child("velha").setValue(false);
+                                    usuarioBD.child(auth.getUid()).child("clicker").setValue(false);
+                                    usuarioBD.child(auth.getUid()).child("livre").setValue(false);
+
+                                    Toast.makeText(getApplicationContext(), "Bem-vindo, " + usuario.toUpperCase() +"!", Toast.LENGTH_SHORT).show();
 
                                     // Volta para tela de registro
                                     Intent intent = new Intent(TelaRegistro.this, TelaPrincipal.class);

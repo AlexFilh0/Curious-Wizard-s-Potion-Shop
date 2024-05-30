@@ -44,7 +44,7 @@
         android:maxLines="1"
         android:rotation="-2"
         android:singleLine="true"
-        android:text="BEm VINDO, [login]"
+        android:text="Carregando..."
         android:textColor="#FF000000"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
