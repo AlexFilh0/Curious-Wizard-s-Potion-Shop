@@ -10,7 +10,14 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Clicker extends BaseMainActivity {
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private DatabaseReference referencia = FirebaseDatabase.getInstance().getReference();
+
     int cliques = 0;
     public void vibra(long tempo) {
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -30,6 +37,16 @@ public class Clicker extends BaseMainActivity {
             public void onClick(View v) {
                 vibra(100);
                 if (cliques == 99) {
+                    // Define as variáveis do banco ("tabelas")
+                    DatabaseReference usuarioBD = referencia.child("usuario");
+
+                    // Recupera o usuário logado
+                    DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
+
+                    // Desbloqueia o jogo da velha
+                    usuarioLogado.child("livre").setValue(true);
+
+
                     Intent intent = new Intent(Clicker.this, TelaFinal.class);
                     startActivity(intent);
                 }
