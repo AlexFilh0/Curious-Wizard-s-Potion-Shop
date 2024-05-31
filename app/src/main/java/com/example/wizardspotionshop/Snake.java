@@ -74,7 +74,7 @@ public class Snake extends BaseMainActivity {
         // Recupera o usuário logado
         DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
 
-        if (score >= 2) { // MUDAR SCORE
+        if (score >= 15) { // MUDAR SCORE
             // Desbloqueia o jogo da velha
             usuarioLogado.child("velha").setValue(true);
         }
