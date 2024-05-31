@@ -227,8 +227,8 @@ public class Snake extends BaseMainActivity {
 
     private void spawnFood() {
         Random random = new Random();
-        foodX = random.nextInt(numBlocksWide) * blockSize;
-        foodY = random.nextInt(numBlocksHigh) * blockSize;
+        foodX = random.nextInt(frameLayout.getWidth()) * blockSize;
+        foodY = random.nextInt(frameLayout.getHeight()) * blockSize;
         food.setX(foodX);
         food.setY(foodY);
     }
