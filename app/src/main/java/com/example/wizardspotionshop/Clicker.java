@@ -46,7 +46,6 @@ public class Clicker extends BaseMainActivity {
                     // Desbloqueia o jogo da velha
                     usuarioLogado.child("livre").setValue(true);
 
-
                     Intent intent = new Intent(Clicker.this, TelaFinal.class);
                     startActivity(intent);
                 }
@@ -54,8 +53,6 @@ public class Clicker extends BaseMainActivity {
                 txt_cliques.setText(cliques + "%");
             }
         });
-
-
     }
 
     @Override

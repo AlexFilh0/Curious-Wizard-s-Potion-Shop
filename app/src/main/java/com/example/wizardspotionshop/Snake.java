@@ -15,9 +15,14 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,16 +68,32 @@ public class Snake extends BaseMainActivity {
         btn_sair.setVisibility(View.VISIBLE);
         btn_reiniciar.setVisibility(View.VISIBLE);
 
-        if (score >= 2) {
-            // Define as variáveis do banco ("tabelas")
-            DatabaseReference usuarioBD = referencia.child("usuario");
+        // Define as variáveis do banco ("tabelas")
+        DatabaseReference usuarioBD = referencia.child("usuario");
 
-            // Recupera o usuário logado
-            DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
+        // Recupera o usuário logado
+        DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
 
+        if (score >= 2) { // MUDAR SCORE
             // Desbloqueia o jogo da velha
             usuarioLogado.child("velha").setValue(true);
         }
+
+        /* PONTUACAO */
+        // Define as variáveis dos campos
+        TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+
+        // Define variáveis de controle
+        int pontuacao;
+
+        // Atualiza a pontuação
+        pontuacao = Integer.parseInt(txtPontuacao.getText().toString());
+        pontuacao += score;
+
+        //txtPontuacao.setText(Integer.toString(pontuacao));
+        usuarioLogado.child("pontuacao").setValue(pontuacao);
+
+        /* FIM PONTUACAO */
 
         btn_sair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +134,28 @@ public class Snake extends BaseMainActivity {
         ImageButton btn_left = findViewById(R.id.btn_left);
 
         Button btn_reiniciar = findViewById(R.id.btn_reiniciar);
+
+        // Define as variáveis dos campos
+        TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+
+        // Define as variáveis do banco ("tabelas")
+        DatabaseReference usuarioBD = referencia.child("usuario");
+
+        // Recupera o usuário logado
+        DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
+
+        // Recupera a pontuação total do usuário
+        usuarioLogado.child("pontuacao").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                txtPontuacao.setText(snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
         btn_up.setOnClickListener(new View.OnClickListener() {

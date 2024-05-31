@@ -11,9 +11,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class JogoDaVelha extends BaseMainActivity {
@@ -32,6 +37,28 @@ public class JogoDaVelha extends BaseMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_velha);
+
+        // Define as variáveis dos campos
+        TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+
+        // Define as variáveis do banco ("tabelas")
+        DatabaseReference usuarioBD = referencia.child("usuario");
+
+        // Recupera o usuário logado
+        DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
+
+        // Recupera a pontuação total do usuário
+        usuarioLogado.child("pontuacao").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                txtPontuacao.setText(snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         // Criar instância do jogo
         game = new Game();
@@ -162,6 +189,22 @@ public class JogoDaVelha extends BaseMainActivity {
 
                         // Desbloqueia o clicker
                         usuarioLogado.child("clicker").setValue(true);
+
+                        /* PONTUACAO */
+                        // Define as variáveis dos campos
+                        TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+
+                        // Define variáveis de controle
+                        int pontuacao;
+
+                        // Atualiza a pontuação
+                        pontuacao = Integer.parseInt(txtPontuacao.getText().toString());
+                        pontuacao += 5;
+
+                        //txtPontuacao.setText(Integer.toString(pontuacao));
+                        usuarioLogado.child("pontuacao").setValue(pontuacao);
+
+                        /* FIM PONTUACAO */
                     }
                     else {
                         winner = 'O';
