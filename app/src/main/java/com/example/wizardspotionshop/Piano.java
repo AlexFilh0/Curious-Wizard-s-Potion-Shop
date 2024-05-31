@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +41,28 @@ public class Piano extends BaseMainActivity {
                              WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.tela_piano);
+
+        // Define as variáveis dos campos
+        TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+
+        // Define as variáveis do banco ("tabelas")
+        DatabaseReference usuarioBD = referencia.child("usuario");
+
+        // Recupera o usuário logado
+        DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
+
+        // Recupera a pontuação total do usuário
+        usuarioLogado.child("pontuacao").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                txtPontuacao.setText(snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public String[] sequencia() {
@@ -51,7 +74,6 @@ public class Piano extends BaseMainActivity {
 
     public void gameLoop() throws InterruptedException {
         TextView txtNota = findViewById(R.id.txtNotas);
-
 
         txtNota.setText("Notas: " + seq[0] + " " + seq[1] + " "+ seq[2]);
         //tocar as notas
@@ -130,22 +152,22 @@ public class Piano extends BaseMainActivity {
 
                 // Desbloqueia o jogo da cobrinha
                 usuarioLogado.child("snake").setValue(true);
-//                usuarioLogado.child("pontuacao").setValue(20);
-//
-//                usuarioLogado.child("pontuacao").addValueEventListener(new ValueEventListener() {
-//                    int pontuacao;
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        pontuacao = Integer.parseInt(snapshot.getValue().toString());
-//                        usuarioLogado.child("pontuacao").setValue(pontuacao + 1);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
 
+                /* PONTUACAO */
+                // Define as variáveis dos campos
+                TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+
+                // Define variáveis de controle
+                int pontuacao;
+
+                // Atualiza a pontuação
+                pontuacao = Integer.parseInt(txtPontuacao.getText().toString());
+                pontuacao += 5;
+
+                //txtPontuacao.setText(Integer.toString(pontuacao));
+                usuarioLogado.child("pontuacao").setValue(pontuacao);
+
+                /* FIM PONTUACAO */
             }
             else {
                 btnPiano.setText("NÃO");
