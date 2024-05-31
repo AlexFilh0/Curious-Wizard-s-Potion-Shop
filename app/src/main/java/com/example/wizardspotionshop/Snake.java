@@ -3,6 +3,7 @@ package com.example.wizardspotionshop;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Point;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -14,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -74,7 +76,18 @@ public class Snake extends BaseMainActivity {
         // Recupera o usuário logado
         DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
 
-        if (score >= 15) { // MUDAR SCORE
+
+
+        if (score >= 15) {
+            //Verificar se não está bloqueado
+
+            final MediaPlayer alerta = MediaPlayer.create(this, R.raw.alert);
+            alerta.start();
+            vibra(50);
+            vibra(100);
+
+            Toast.makeText(this, "Jogo da Velha desbloqueado!", Toast.LENGTH_SHORT).show();
+
             // Desbloqueia o jogo da velha
             usuarioLogado.child("velha").setValue(true);
         }
@@ -94,6 +107,9 @@ public class Snake extends BaseMainActivity {
         usuarioLogado.child("pontuacao").setValue(pontuacao);
 
         /* FIM PONTUACAO */
+
+
+
 
         btn_sair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,8 +243,8 @@ public class Snake extends BaseMainActivity {
 
     private void spawnFood() {
         Random random = new Random();
-        foodX = random.nextInt(frameLayout.getWidth()) * blockSize;
-        foodY = random.nextInt(frameLayout.getHeight()) * blockSize;
+        foodX = random.nextInt(numBlocksWide) * blockSize;
+        foodY = random.nextInt(numBlocksHigh) * blockSize;
         food.setX(foodX);
         food.setY(foodY);
     }

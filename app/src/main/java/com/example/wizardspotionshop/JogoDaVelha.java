@@ -3,6 +3,7 @@ import java.util.Random;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -187,8 +188,7 @@ public class JogoDaVelha extends BaseMainActivity {
                         // Recupera o usuário logado
                         DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
 
-                        // Desbloqueia o clicker
-                        usuarioLogado.child("clicker").setValue(true);
+
 
                         /* PONTUACAO */
                         // Define as variáveis dos campos
@@ -205,6 +205,16 @@ public class JogoDaVelha extends BaseMainActivity {
                         usuarioLogado.child("pontuacao").setValue(pontuacao);
 
                         /* FIM PONTUACAO */
+                        final MediaPlayer alerta = MediaPlayer.create(this, R.raw.alert);
+                        alerta.start();
+                        vibra(50);
+                        vibra(100);
+
+                        Toast.makeText(this, "Clicker desbloqueado!", Toast.LENGTH_SHORT).show();
+
+                        // Desbloqueia o clicker
+                        usuarioLogado.child("clicker").setValue(true);
+
                     }
                     else {
                         winner = 'O';

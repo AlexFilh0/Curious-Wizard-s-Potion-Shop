@@ -1,8 +1,10 @@
 package com.example.wizardspotionshop;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
@@ -132,6 +134,13 @@ public class Piano extends BaseMainActivity {
         }
     }
 
+
+    public void vibra(long tempo) {
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(tempo);
+    }
+
+
     public void isCorrect() {
         Button btnPiano = findViewById(R.id.btn_piano_start);
         //Verifica se está correto
@@ -140,7 +149,7 @@ public class Piano extends BaseMainActivity {
             notaTocada.toArray(nTocadas);
 
             if (Arrays.equals(nTocadas, seq)) {
-                btnPiano.setText("FOI");
+
                 notaTocada.clear();
                 seq = sequencia();
 
@@ -150,8 +159,7 @@ public class Piano extends BaseMainActivity {
                 // Recupera o usuário logado
                 DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
 
-                // Desbloqueia o jogo da cobrinha
-                usuarioLogado.child("snake").setValue(true);
+
 
                 /* PONTUACAO */
                 // Define as variáveis dos campos
@@ -168,6 +176,18 @@ public class Piano extends BaseMainActivity {
                 usuarioLogado.child("pontuacao").setValue(pontuacao);
 
                 /* FIM PONTUACAO */
+
+                //Alerta desbloqueio
+                //Se jogo Cobrinha Falso
+                final MediaPlayer alerta = MediaPlayer.create(this, R.raw.alert);
+                alerta.start();
+                vibra(50);
+                vibra(100);
+
+                Toast.makeText(this, "Jogo da Cobrinha desbloqueado!", Toast.LENGTH_SHORT).show();
+
+                // Desbloqueia o jogo da cobrinha
+                usuarioLogado.child("snake").setValue(true);
             }
             else {
                 btnPiano.setText("NÃO");
