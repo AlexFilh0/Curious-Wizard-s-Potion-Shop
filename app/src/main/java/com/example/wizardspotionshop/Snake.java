@@ -67,6 +67,8 @@ public class Snake extends BaseMainActivity {
         Button btn_reiniciar = findViewById(R.id.btn_reiniciar);
         Button btn_sair = findViewById(R.id.btn_sair_snake);
 
+        TextView txtStatusVelha = findViewById(R.id.txtStatusVelha);
+
         btn_sair.setVisibility(View.VISIBLE);
         btn_reiniciar.setVisibility(View.VISIBLE);
 
@@ -76,9 +78,10 @@ public class Snake extends BaseMainActivity {
         // Recupera o usuário logado
         DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
 
+        // Verifica se a Velha já foi desbloqueado
+        Boolean velha = Boolean.valueOf(txtStatusVelha.getText().toString());
 
-
-        if (score >= 15) {
+        if (score >= 10 && velha == false) {
             //Verificar se não está bloqueado
 
             final MediaPlayer alerta = MediaPlayer.create(this, R.raw.alert);
@@ -107,9 +110,6 @@ public class Snake extends BaseMainActivity {
         usuarioLogado.child("pontuacao").setValue(pontuacao);
 
         /* FIM PONTUACAO */
-
-
-
 
         btn_sair.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -141,8 +141,8 @@ public class Snake extends BaseMainActivity {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        screenWidth = size.x;
-        screenHeight = size.y;
+        screenWidth = frameLayout.getWidth();
+        screenHeight = frameLayout.getHeight();
 
         ImageButton btn_up = findViewById(R.id.btn_up);
         ImageButton btn_down = findViewById(R.id.btn_down);
@@ -153,6 +153,7 @@ public class Snake extends BaseMainActivity {
 
         // Define as variáveis dos campos
         TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+        TextView txtStatusVelha = findViewById(R.id.txtStatusVelha);
 
         // Define as variáveis do banco ("tabelas")
         DatabaseReference usuarioBD = referencia.child("usuario");
@@ -173,6 +174,18 @@ public class Snake extends BaseMainActivity {
             }
         });
 
+        // Recupera o status da velha (proxímo minigame)
+        usuarioLogado.child("velha").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                txtStatusVelha.setText(snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         btn_up.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,8 +256,19 @@ public class Snake extends BaseMainActivity {
 
     private void spawnFood() {
         Random random = new Random();
-        foodX = random.nextInt(numBlocksWide) * blockSize;
-        foodY = random.nextInt(numBlocksHigh) * blockSize;
+        int x = frameLayout.getWidth();
+        int y = frameLayout.getHeight();
+        if (x == 0 || y == 0) {
+            foodX = random.nextInt(numBlocksWide) * blockSize;
+            foodY = random.nextInt(numBlocksHigh) * blockSize;
+        } else {
+            int randomX = random.nextInt(x);
+            int randomY = random.nextInt(y);
+
+            foodX = randomX - (randomX % blockSize);
+            foodY = randomY - (randomY % blockSize);
+        }
+
         food.setX(foodX);
         food.setY(foodY);
     }

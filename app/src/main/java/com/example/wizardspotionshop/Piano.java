@@ -5,12 +5,10 @@ import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +44,7 @@ public class Piano extends BaseMainActivity {
 
         // Define as variáveis dos campos
         TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+        TextView txtStatusSnake = findViewById(R.id.txtStatusSnake);
 
         // Define as variáveis do banco ("tabelas")
         DatabaseReference usuarioBD = referencia.child("usuario");
@@ -58,6 +57,19 @@ public class Piano extends BaseMainActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 txtPontuacao.setText(snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        // Recupera o status do snake (proxímo minigame)
+        usuarioLogado.child("snake").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                txtStatusSnake.setText(snapshot.getValue().toString());
             }
 
             @Override
@@ -149,6 +161,10 @@ public class Piano extends BaseMainActivity {
             notaTocada.toArray(nTocadas);
 
             if (Arrays.equals(nTocadas, seq)) {
+                vibra(100);
+
+                Toast.makeText(this, "BOA!", Toast.LENGTH_SHORT).show();
+                btnPiano.setText("TOCAR");
 
                 notaTocada.clear();
                 seq = sequencia();
@@ -159,11 +175,10 @@ public class Piano extends BaseMainActivity {
                 // Recupera o usuário logado
                 DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
 
-
-
                 /* PONTUACAO */
                 // Define as variáveis dos campos
                 TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+                TextView txtStatusSnake = findViewById(R.id.txtStatusSnake);
 
                 // Define variáveis de controle
                 int pontuacao;
@@ -177,20 +192,27 @@ public class Piano extends BaseMainActivity {
 
                 /* FIM PONTUACAO */
 
-                //Alerta desbloqueio
-                //Se jogo Cobrinha Falso
-                final MediaPlayer alerta = MediaPlayer.create(this, R.raw.alert);
-                alerta.start();
-                vibra(50);
+                // Verifica se a Cobrinha já foi desbloqueado
+                Boolean snake = Boolean.valueOf(txtStatusSnake.getText().toString());
+
+                if (snake == false) {
+                    //Alerta desbloqueio
+                    final MediaPlayer alerta = MediaPlayer.create(this, R.raw.alert);
+                    alerta.start();
+                    vibra(50);
+                    vibra(100);
+
+                    Toast.makeText(this, "Jogo da Cobrinha desbloqueado!", Toast.LENGTH_SHORT).show();
+
+                    // Desbloqueia o jogo da cobrinha
+                    usuarioLogado.child("snake").setValue(true);
+                }
+            } else {
                 vibra(100);
 
-                Toast.makeText(this, "Jogo da Cobrinha desbloqueado!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "NÃO :(", Toast.LENGTH_SHORT).show();
 
-                // Desbloqueia o jogo da cobrinha
-                usuarioLogado.child("snake").setValue(true);
-            }
-            else {
-                btnPiano.setText("NÃO");
+                btnPiano.setText("RECOMEÇAR");
                 notaTocada.clear();
                 seq = sequencia();
             }

@@ -41,6 +41,7 @@ public class JogoDaVelha extends BaseMainActivity {
 
         // Define as variáveis dos campos
         TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+        TextView txtStatusClicker = findViewById(R.id.txtStatusClicker);
 
         // Define as variáveis do banco ("tabelas")
         DatabaseReference usuarioBD = referencia.child("usuario");
@@ -53,6 +54,19 @@ public class JogoDaVelha extends BaseMainActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 txtPontuacao.setText(snapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        // Recupera o status do clicker (proxímo minigame)
+        usuarioLogado.child("clicker").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                txtStatusClicker.setText(snapshot.getValue().toString());
             }
 
             @Override
@@ -188,11 +202,10 @@ public class JogoDaVelha extends BaseMainActivity {
                         // Recupera o usuário logado
                         DatabaseReference usuarioLogado = usuarioBD.child(auth.getUid());
 
-
-
                         /* PONTUACAO */
                         // Define as variáveis dos campos
                         TextView txtPontuacao = findViewById(R.id.txtPontuacao);
+                        TextView txtStatusClicker = findViewById(R.id.txtStatusClicker);
 
                         // Define variáveis de controle
                         int pontuacao;
@@ -205,16 +218,21 @@ public class JogoDaVelha extends BaseMainActivity {
                         usuarioLogado.child("pontuacao").setValue(pontuacao);
 
                         /* FIM PONTUACAO */
-                        final MediaPlayer alerta = MediaPlayer.create(this, R.raw.alert);
-                        alerta.start();
-                        vibra(50);
-                        vibra(100);
 
-                        Toast.makeText(this, "Clicker desbloqueado!", Toast.LENGTH_SHORT).show();
+                        // Verifica se o Clicker já foi desbloqueado
+                        Boolean clicker = Boolean.valueOf(txtStatusClicker.getText().toString());
 
-                        // Desbloqueia o clicker
-                        usuarioLogado.child("clicker").setValue(true);
+                        if (clicker == false) {
+                            final MediaPlayer alerta = MediaPlayer.create(this, R.raw.alert);
+                            alerta.start();
+                            vibra(50);
+                            vibra(100);
 
+                            Toast.makeText(this, "Clicker desbloqueado!", Toast.LENGTH_SHORT).show();
+
+                            // Desbloqueia o clicker
+                            usuarioLogado.child("clicker").setValue(true);
+                        }
                     }
                     else {
                         winner = 'O';
