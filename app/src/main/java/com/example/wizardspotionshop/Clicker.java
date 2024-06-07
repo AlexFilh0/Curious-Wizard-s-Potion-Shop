@@ -48,6 +48,8 @@ public class Clicker extends BaseMainActivity {
 
                     Intent intent = new Intent(Clicker.this, TelaFinal.class);
                     startActivity(intent);
+                    Clicker.this.finish();
+                    System.exit(0);
                 }
                 cliques++;
                 txt_cliques.setText(cliques + "%");

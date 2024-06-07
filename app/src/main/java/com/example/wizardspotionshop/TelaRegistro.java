@@ -73,6 +73,12 @@ public class TelaRegistro extends BaseMainActivity {
                     return;
                 }
 
+                //Verifica se o usuário Está preenchido
+                if (usuario.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Digite o Usuário", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 // Verifica se a senha tem no mínimo 6 caracteres
                 if (senha.length() < 6) {
                     Toast.makeText(getApplicationContext(), "A senha deve conter no mínimo 6 caracteres", Toast.LENGTH_SHORT).show();
@@ -96,7 +102,7 @@ public class TelaRegistro extends BaseMainActivity {
                     Toast.makeText(getApplicationContext(), "Digite um E-mail válido", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                
                 //usuarioDAO.registrar(login, senha);
 
                 // Cadastro de usuário (Firebase)

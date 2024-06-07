@@ -17,7 +17,8 @@ public class TelaFinal extends BaseMainActivity {
         btn_sair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                TelaFinal.this.finish();
+
                 System.exit(0);
             }
         });

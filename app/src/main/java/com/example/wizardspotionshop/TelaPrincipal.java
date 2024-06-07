@@ -117,6 +117,8 @@ public class TelaPrincipal extends BaseMainActivity {
             public void onClick(View v) {
                 Intent mudar_clicker = new Intent(TelaPrincipal.this, Clicker.class);
                 startActivity(mudar_clicker);
+                TelaPrincipal.this.finish();
+
             }
         });
 
